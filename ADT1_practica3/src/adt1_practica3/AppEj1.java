@@ -35,21 +35,21 @@ public class AppEj1 {
         
         try {
             
-            if (!archivo.exists()) {
-                archivo.createNewFile();
-            }
+//            if (!archivo.exists()) {
+//                archivo.createNewFile();
+//            }
 
             while (eleccion != 3) {
                 
-                ObjectInputStream ins = new ObjectInputStream(new FileInputStream(archivo));
-                ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(archivo,true));
-//                MiObjectOutputStream mois = new MiObjectOutputStream(out);
+                
+                
 
                 eleccion = Integer.parseInt(JOptionPane.showInputDialog(null, "Selecciona una opcion :\n1.Introducir coche\n2.Mostrar coches\n3.Salir"));
             
                 switch (eleccion) {
                     case 1:
-                            
+                            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(archivo,true));
+                            // MiObjectOutputStream mois = new MiObjectOutputStream(out);
                         
                             marca = JOptionPane.showInputDialog(null, "Marca:");
                             modelo = JOptionPane.showInputDialog(null, "Modelo:");
@@ -67,6 +67,7 @@ public class AppEj1 {
                         break;
                     case 2:
                         
+                        ObjectInputStream ins = new ObjectInputStream(new FileInputStream(archivo));
                         Vehiculo v1 = (Vehiculo) ins.readObject();
                         
                         while (v1 != null) {
