@@ -1,3 +1,5 @@
+package adt1_practica3;
+
 
 
 
@@ -22,11 +24,12 @@ public class MiObjectOutputStream extends ObjectOutputStream{
     }
 
     public MiObjectOutputStream() throws IOException, SecurityException {
+        super();
     }
     
     
     
-    @Override
+    
     protected void writeStreamHeader() throws IOException{
         
     }
