@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package adt3_practica1;
+package adt3_practica1e1;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,7 +30,7 @@ import org.xml.sax.SAXException;
  *
  * @author vesprada
  */
-public class Ejercicio1 {
+public class App1 {
 
     /**
      * @param args the command line arguments
@@ -95,15 +95,15 @@ public class Ejercicio1 {
             
             
         } catch (ParserConfigurationException ex) {
-            Logger.getLogger(Ejercicio1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(App1.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SAXException ex) {
-            Logger.getLogger(Ejercicio1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(App1.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Ejercicio1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(App1.class.getName()).log(Level.SEVERE, null, ex);
         } catch (TransformerConfigurationException ex) {
-            Logger.getLogger(Ejercicio1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(App1.class.getName()).log(Level.SEVERE, null, ex);
         } catch (TransformerException ex) {
-            Logger.getLogger(Ejercicio1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(App1.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

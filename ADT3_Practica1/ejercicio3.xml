@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <libros>
     <prestamo>
         <libro isbn="978­84­8346­520­2">
@@ -19,6 +19,12 @@
             <autor>3123213</autor>
             <anyo>dasdas</anyo>
             <editorial>32131</editorial>
+        </libro>
+        <libro>
+            <titulo>asdf</titulo>
+            <autor>asdf</autor>
+            <anyo>3424</anyo>
+            <editorial>asdf</editorial>
         </libro>
     </prestamo>
     <venta>

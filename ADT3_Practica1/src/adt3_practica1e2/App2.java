@@ -1,4 +1,4 @@
-package adt3_practica1;
+package adt3_practica1e2;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +25,7 @@ import org.xml.sax.SAXException;
  *
  * @author vesprada
  */
-public class Ejercicio2 {
+public class App2 {
 
     public static void main(String[] args) {
         try {
@@ -60,9 +60,9 @@ public class Ejercicio2 {
             
             edad1 = docNuevo.createElement("edad");
             
-            nombre.setTextContent("Juan");
-            apellido.setTextContent("Martí López");
-            edad1.setTextContent("18");
+            nombre.setTextContent("Amparo");
+            apellido.setTextContent("Descals Luna");
+            edad1.setTextContent("25");
             alumno.appendChild(nombre);
             alumno.appendChild(apellido);
             alumno.appendChild(edad1);
@@ -83,9 +83,9 @@ public class Ejercicio2 {
             
             System.out.println("Arxiu creat!");
         } catch (ParserConfigurationException ex) {
-            Logger.getLogger(Ejercicio2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(App2.class.getName()).log(Level.SEVERE, null, ex);
         } catch (TransformerException ex) {
-            Logger.getLogger(Ejercicio2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(App2.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

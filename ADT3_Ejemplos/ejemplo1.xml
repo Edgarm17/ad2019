@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recetas>
+    <receta>
+        <titulo categoria="segundo">Tortilla de patatas</titulo>
+        <descripcion dificultad="media">Typical Spanish</descripcion>
+        <ingredientes>
+            <ingrediente>
+                <nombre>Patata</nombre>
+                <cantidad medida="unidades">al gusto</cantidad>
+            </ingrediente>
+            <ingrediente>
+                <nombre>huevo</nombre>
+                <cantidad medida="unidades">al gusto</cantidad>	
+            </ingrediente>
+        </ingredientes>
+    </receta>
+    <receta>
+        <titulo categoria="segundo">Paella</titulo>
+        <descripcion dificultad="media">Typical Spanish</descripcion>
+        <ingredientes>
+            <ingrediente>
+                <nombre>Arroz</nombre>
+                <cantidad medida="unidades">al gusto</cantidad>
+            </ingrediente>
+            <ingrediente>
+                <nombre>huevo</nombre>
+                <cantidad medida="unidades">al gusto</cantidad>	
+            </ingrediente>
+        </ingredientes>
+    </receta>
+</recetas>
