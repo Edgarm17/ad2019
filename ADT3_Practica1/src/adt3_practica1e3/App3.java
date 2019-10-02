@@ -61,11 +61,10 @@ public class App3 {
             System.out.println("Libro " + (i + 1));
             NodeList n = nl.item(i).getChildNodes();
             for (int j = 0; j < n.getLength(); j++) {
-                System.out.println(n.item(j).getNodeName() + ":" + n.item(j).getTextContent().trim());
-                System.out.println("");
+                System.out.println(n.item(j).getNodeName() + ":" + n.item(j).getTextContent());
             }
             System.out.println("");
-            System.out.println("");
+            
         }
     }
 
@@ -78,9 +77,13 @@ public class App3 {
         for (int i = 0; i < nl.getLength(); i++) {
             System.out.println("Libro " + (i + 1));
             NodeList n = nl.item(i).getChildNodes();
+            
+            
             for (int j = 0; j < n.getLength(); j++) {
-
-                System.out.println(n.item(j).getNodeName() + ":" + n.item(j).getTextContent().trim());
+                if (n.item(j).getNodeType()==1) {
+                    System.out.println(n.item(j).getNodeName() + ":" + n.item(j).getTextContent().trim());
+                }
+                
 
             }
             System.out.println("");
