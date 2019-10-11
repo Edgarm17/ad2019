@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><recetario>
+    <receta tipo="secundario">
+        <nombre>Tortilla de cebolla</nombre>
+        <descripcion>Cebolla de temporada</descripcion>
+        <precio>7.9</precio>
+    </receta>
+</recetario>

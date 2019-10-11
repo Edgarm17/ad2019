@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><recetario>
+    <receta tipo="principal">
+        <nombre>Tortilla de patatas</nombre>
+        <descripcion>Receta elaborada en Madrid</descripcion>
+        <precio>7.5</precio>
+    </receta>
+    <receta tipo="principal">
+        <nombre>Ensalada de pollo</nombre>
+        <descripcion>Plato realizado por el cocinero Juan</descripcion>
+        <precio>6.8</precio>
+    </receta>
+</recetario>

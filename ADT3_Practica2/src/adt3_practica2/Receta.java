@@ -12,11 +12,21 @@ package adt3_practica2;
 public class Receta {
     
     String tipo,nombre,descripcion;
+    float precio;
 
-    public Receta(String tipo, String nombre, String descripcion) {
+    public Receta(String tipo, String nombre, String descripcion,float precio) {
         this.tipo = tipo;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.precio = precio;
+    }
+
+    public float getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
     }
 
     public Receta() {

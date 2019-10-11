@@ -27,6 +27,7 @@ public class ManejadorRecetas extends DefaultHandler {
         this.secundarios = secundarios;
         this.postre = postre;
     }
+    
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
@@ -35,8 +36,8 @@ public class ManejadorRecetas extends DefaultHandler {
         if (localName.equals("receta")) {
             receta = new Receta();
             String tipo = attributes.getValue("tipo");
-            System.out.println(tipo);
             receta.setTipo(tipo);
+            
             
             switch (receta.getTipo()) {
                 case "principal":
@@ -66,7 +67,10 @@ public class ManejadorRecetas extends DefaultHandler {
             receta.setNombre(valor);
         } else if (localName.equals("descripcion")) {
             receta.setDescripcion(valor);
+        } else if(localName.equals("precio")){
+            receta.setPrecio(Float.parseFloat(valor));
         }
+        
         
         
     }
