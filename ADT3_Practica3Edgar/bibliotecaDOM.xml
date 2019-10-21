@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<biblioteca>
+    <libro>
+        <titulo>Hola</titulo>
+        <autor>asdf</autor>
+        <isbn>asf</isbn>
+        <anyo>asdf</anyo>
+        <editorial>asdf</editorial>
+        <paginas>34</paginas>
+    </libro>
+    <libro>
+        <titulo>fasdf</titulo>
+        <autor>fafr</autor>
+        <isbn>te</isbn>
+        <anyo>wert</anyo>
+        <editorial>trew</editorial>
+        <paginas>654</paginas>
+    </libro>
+    <libro>
+        <titulo>ammm</titulo>
+        <autor>fasdf</autor>
+        <isbn>asfd</isbn>
+        <anyo>asdf</anyo>
+        <editorial>asdf</editorial>
+        <paginas>fsda</paginas>
+    </libro>
+</biblioteca>
