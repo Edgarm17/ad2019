@@ -55,6 +55,7 @@ public class Avion extends JFrame {
                                 btn.setIcon(new ImageIcon("img/asientoOcupado.png"));
                                 reservas++;
                                 abajo.setText("Reservas: "+reservas);
+                                
                             }
                         }else{
                             JOptionPane.showMessageDialog(null, "El asiento ya esta reservado");
