@@ -5,6 +5,7 @@
  */
 package adt3_practica3edgar;
 
+import practicar.MiObjectOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
