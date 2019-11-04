@@ -1,0 +1,39 @@
+EJERCICIO 1: 
+
+	DELIMITER //
+
+	CREATE procedure sacarDiferencia(IN num1 INT, IN num2 INT, OUT cadena VARCHAR(50))
+
+	BEGIN
+	    DECLARE resultado INT;
+	       
+	    SET resultado = num1 - num2;
+	    
+	    IF (resultado < 50) THEN
+		SET cadena = "La diferencia es pequeña";
+		
+	    ELSEIF(resultado > 50 AND resultado < 150) THEN
+		SET cadena = "La diferencia es mediana";
+	    ELSEIF(resultado > 150) THEN
+		SET cadena = "La diferencia es grande";
+	    END IF;
+	    
+	    
+
+	END //
+
+	DELIMITER ;
+	
+
+EJERCICIO2: 
+
+	CREATE TRIGGER `almacenarPoblacioneBorradas` 
+	BEFORE DELETE ON `poblaciones`
+ 	FOR EACH ROW BEGIN
+			INSERT INTO poblaciones_old(codPob,fecha,habitantes,nombrePob,usuario) VALUES(OLD.codPob,NOW(),OLD.habitantes, OLD.nombrePob, USER());
+        END
+        
+EJERCICIO 3:
+
+
+	
