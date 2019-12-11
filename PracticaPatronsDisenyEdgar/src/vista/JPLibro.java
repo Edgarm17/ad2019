@@ -57,7 +57,7 @@ public class JPLibro extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        jLabel2.setText("Datos socio");
+        jLabel2.setText("Datos libro");
 
         jLabel3.setText("Título:");
 
@@ -203,7 +203,7 @@ public class JPLibro extends javax.swing.JPanel {
                 .addGap(19, 19, 19))
         );
 
-        jLabel1.setText("Lista socios");
+        jLabel1.setText("Lista libros");
 
         jLabel16.setText("Búsqueda por título o libro:");
 
