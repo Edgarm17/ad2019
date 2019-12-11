@@ -5,7 +5,7 @@
  */
 package ejemplomvc;
 
-import controlador.Controlador;
+import controlador.ControladorLibro;
 import modelo.Cliente;
 import modelo.ClienteDAO;
 import modelo.SingletonCustom;
@@ -29,7 +29,7 @@ public class EjemploMVC {
 //        cdao.insertarCliente(new Cliente("Alex","Cipote","20545877C"));
 
         VistaClientes vista = new VistaClientes();
-        Controlador controlador = new Controlador();
+        ControladorLibro controlador = new ControladorLibro();
         
         controlador.setVistaClientes(vista);
         controlador.setClienteDAO(cdao);
