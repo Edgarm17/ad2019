@@ -12,7 +12,7 @@ import java.sql.DriverManager;
  *
  * @author vesprada
  */
-public class SingletonCustom {
+public class GestionSG {
     
     private String DRIVER = "com.mysql.jdbc.Driver";
     private String BD = "biblioteca";
@@ -20,10 +20,10 @@ public class SingletonCustom {
     private String PASSWORD = "";
     private String URL = "jdbc:mysql://localhost/" + BD;
     
-    private static SingletonCustom singleton;
+    private static GestionSG singleton;
     private Connection conexion;
     
-    private SingletonCustom(){
+    private GestionSG(){
         try {
             Class.forName(DRIVER);
             conexion = DriverManager.getConnection(URL, LOGIN, PASSWORD);
@@ -35,9 +35,9 @@ public class SingletonCustom {
         
     }
     
-    public static SingletonCustom crearSingletonBBDD(){
+    public static GestionSG crearSingletonBBDD(){
         if (singleton == null) {
-            singleton = new SingletonCustom();
+            singleton = new GestionSG();
         }
         
         return singleton;
@@ -52,7 +52,6 @@ public class SingletonCustom {
             singleton.conexion.close();
             System.out.println("Desconectado");
         } catch (Exception e) {
-            System.out.println("sadf");
             System.out.println("Error "+e.getMessage());
         }
     }

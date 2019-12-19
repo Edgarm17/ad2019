@@ -5,6 +5,14 @@
  */
 package vista;
 
+import controlador.ControladorSocio;
+import java.util.Vector;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import modelo.Socio;
+import modelo.SocioDAO;
+
 /**
  *
  * @author vesprada
@@ -13,10 +21,38 @@ public class JDSocios extends javax.swing.JDialog {
 
     /**
      * Creates new form JDSocios
+     * 
+     * 
      */
+    
+    private ControladorSocio controlador;
+    private SocioDAO socioDAO;
+    private JPPrestamo panelPadre;
+    
+    public JDSocios(java.awt.Frame parent, boolean modal, JPPrestamo padre) {
+        super(parent, modal);
+        initComponents();
+        
+        panelPadre = padre;
+        socioDAO = new SocioDAO();
+        controlador = new ControladorSocio(socioDAO,this);
+    }
+
+    public JPPrestamo getPanelPadre() {
+        return panelPadre;
+    }
+
+    public void setPanelPadre(JPPrestamo panelPadre) {
+        this.panelPadre = panelPadre;
+    }
+    
+    
     public JDSocios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        socioDAO = new SocioDAO();
+        controlador = new ControladorSocio(socioDAO,this);
     }
 
     /**
@@ -28,22 +64,22 @@ public class JDSocios extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnSelSocio = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        tfBusqueda = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbSocio = new javax.swing.JTable();
+        lbCantSocios = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jButton1.setText("Seleccionar socio");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSelSocio.setText("Seleccionar socio");
+        btnSelSocio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSelSocioActionPerformed(evt);
             }
         });
 
@@ -51,17 +87,25 @@ public class JDSocios extends javax.swing.JDialog {
 
         jLabel9.setText("Búsqueda por nombre o apellidos:");
 
+        tfBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfBusquedaActionPerformed(evt);
+            }
+        });
+
         jLabel10.setText("Cantidad de socios:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbSocio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "NÚM.SOCIO", "NOMBRE", "APELLIDO", "EDAD", "F.FALTA"
+                "NÚM.SOCIO", "NOMBRE", "APELLIDO", "TELÉFONO", "EDAD", "F.ALTA"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbSocio);
+
+        lbCantSocios.setText("0");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -71,12 +115,12 @@ public class JDSocios extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(86, 86, 86)
                 .addComponent(jLabel10)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbCantSocios, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -88,9 +132,9 @@ public class JDSocios extends javax.swing.JDialog {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbCantSocios))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -104,7 +148,7 @@ public class JDSocios extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 615, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnSelSocio)
                 .addGap(28, 28, 28))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -117,7 +161,7 @@ public class JDSocios extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnSelSocio)
                     .addComponent(jLabel1))
                 .addContainerGap(388, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,9 +174,33 @@ public class JDSocios extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnSelSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelSocioActionPerformed
+        
+        
+        
+        DefaultTableModel modelo = (DefaultTableModel) tbSocio.getModel();
+        
+        Vector<Vector<String>> datos = modelo.getDataVector();
+        Vector<String> datos2 = datos.elementAt(tbSocio.getSelectedRow());
+        
+        String numSocio = datos2.elementAt(0);
+        String nombre = datos2.elementAt(1);
+        String apellidos = datos2.elementAt(2);
+        
+        this.setVisible(false);
+        
+        panelPadre.getTfNumSocio().setText(numSocio);
+        panelPadre.getTfNombreSocio().setText(nombre);
+        panelPadre.getTfApellidosSocio().setText(apellidos);
+        
+    }//GEN-LAST:event_btnSelSocioActionPerformed
+
+    private void tfBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfBusquedaActionPerformed
+        controlador.buscarSocioDialog(this.tfBusqueda.getText(), tbSocio);
+        
+        DefaultTableModel model = (DefaultTableModel) this.tbSocio.getModel();
+        this.lbCantSocios.setText(Integer.toString(model.getRowCount()));
+    }//GEN-LAST:event_tfBusquedaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,14 +245,14 @@ public class JDSocios extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSelSocio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JLabel lbCantSocios;
+    private javax.swing.JTable tbSocio;
+    private javax.swing.JTextField tfBusqueda;
     // End of variables declaration//GEN-END:variables
 }
