@@ -5,6 +5,12 @@
  */
 package vista;
 
+import controlador.ControladorLibro;
+import java.util.Vector;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import modelo.LibroDAO;
+
 /**
  *
  * @author vesprada
@@ -14,9 +20,33 @@ public class JDLibros extends javax.swing.JDialog {
     /**
      * Creates new form JDLibros
      */
+    
+    private ControladorLibro controlador;
+    private LibroDAO libroDAO;
+    private JPPrestamo panelPadre;
+
+    public JPPrestamo getPanelPadre() {
+        return panelPadre;
+    }
+
+    public void setPanelPadre(JPPrestamo panelPadre) {
+        this.panelPadre = panelPadre;
+    }
+    
+    public JDLibros(java.awt.Frame parent, boolean modal, JPPrestamo padre) {
+        super(parent, modal);
+        initComponents();
+        panelPadre = padre;
+        libroDAO = new LibroDAO();
+        controlador = new ControladorLibro(libroDAO,this);
+    }
+    
     public JDLibros(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        libroDAO = new LibroDAO();
+        controlador = new ControladorLibro(libroDAO,this);
     }
 
     /**
@@ -31,12 +61,12 @@ public class JDLibros extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        tfBusqueda = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        tbLibro = new javax.swing.JTable();
+        lbCantLibros = new javax.swing.JLabel();
+        btnSeleccionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -44,9 +74,15 @@ public class JDLibros extends javax.swing.JDialog {
 
         jLabel16.setText("Búsqueda por título o libro:");
 
+        tfBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfBusquedaActionPerformed(evt);
+            }
+        });
+
         jLabel17.setText("Cantidad de libros:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbLibro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -54,7 +90,9 @@ public class JDLibros extends javax.swing.JDialog {
                 "ISBN", "TITULO", "AUTOR", "EJEMPLARES", "AÑO", "EDITORIALES", "PÁGINAS"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbLibro);
+
+        lbCantLibros.setText("0");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -64,11 +102,11 @@ public class JDLibros extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel16)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(86, 86, 86)
                 .addComponent(jLabel17)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbCantLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(45, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -81,15 +119,20 @@ public class JDLibros extends javax.swing.JDialog {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbCantLibros))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jButton1.setText("Selecciona libro");
+        btnSeleccionar.setText("Selecciona libro");
+        btnSeleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeleccionarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,7 +144,7 @@ public class JDLibros extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(599, 599, 599)
-                        .addComponent(jButton1))
+                        .addComponent(btnSeleccionar))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
@@ -111,7 +154,7 @@ public class JDLibros extends javax.swing.JDialog {
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btnSeleccionar, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
@@ -119,6 +162,30 @@ public class JDLibros extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tfBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfBusquedaActionPerformed
+        controlador.buscarLibroDialog(this.tfBusqueda.getText(), this.tbLibro);
+        
+        DefaultTableModel model = (DefaultTableModel) this.tbLibro.getModel();
+        this.lbCantLibros.setText(Integer.toString(model.getRowCount()));
+    }//GEN-LAST:event_tfBusquedaActionPerformed
+
+    private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
+         DefaultTableModel modelo = (DefaultTableModel) tbLibro.getModel();
+        
+        Vector<Vector<String>> datos = modelo.getDataVector();
+        Vector<String> datos2 = datos.elementAt(tbLibro.getSelectedRow());
+        
+        String isbn = datos2.elementAt(0);
+        String titulo = datos2.elementAt(1);
+        String autor = datos2.elementAt(2);
+        
+        this.setVisible(false);
+        
+        panelPadre.getTfIsbn().setText(isbn);
+        panelPadre.getTfTituloLibro().setText(titulo);
+        panelPadre.getTfAutorLibro().setText(autor);
+    }//GEN-LAST:event_btnSeleccionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,14 +230,14 @@ public class JDLibros extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSeleccionar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
+    private javax.swing.JLabel lbCantLibros;
+    private javax.swing.JTable tbLibro;
+    private javax.swing.JTextField tfBusqueda;
     // End of variables declaration//GEN-END:variables
 }

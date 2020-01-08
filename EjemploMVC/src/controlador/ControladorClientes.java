@@ -13,17 +13,17 @@ import vista.VistaClientes;
  *
  * @author vesprada
  */
-public class ControladorLibro {
+public class ControladorClientes {
     
     private ClienteDAO clienteDAO;
     private VistaClientes vistaClientes;
 
-    public ControladorLibro(ClienteDAO cliente, VistaClientes vistaClientes) {
+    public ControladorClientes(ClienteDAO cliente, VistaClientes vistaClientes) {
         this.clienteDAO = cliente;
         this.vistaClientes = vistaClientes;
     }
 
-    public ControladorLibro() {
+    public ControladorClientes() {
         
     }
 

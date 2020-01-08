@@ -5,7 +5,7 @@
  */
 package vista;
 
-import controlador.ControladorLibro;
+import controlador.ControladorClientes;
 import javax.swing.JTextField;
 
 /**
@@ -14,7 +14,7 @@ import javax.swing.JTextField;
  */
 public class VistaClientes extends javax.swing.JFrame {
     
-    private ControladorLibro controlador;
+    private ControladorClientes controlador;
 
     /**
      * Creates new form VistaClientes
@@ -103,11 +103,11 @@ public class VistaClientes extends javax.swing.JFrame {
         controlador.anyadirCliente();
     }//GEN-LAST:event_btnAddActionPerformed
 
-    public ControladorLibro getControlador() {
+    public ControladorClientes getControlador() {
         return controlador;
     }
 
-    public void setControlador(ControladorLibro controlador) {
+    public void setControlador(ControladorClientes controlador) {
         this.controlador = controlador;
     }
 
