@@ -34,8 +34,10 @@ public class PracticaHibernate {
         
         Profesor p1 = new Profesor(1, "Edgar", "Garcia", "Morant");
         
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        
+        //Session session = sessionFactory.openSession();
+        //session.beginTransaction();
         
         //OPERACIONS DE INSERTAR, MODIFICAR I ELIMINAR
         
@@ -56,7 +58,7 @@ public class PracticaHibernate {
 //        Profesor p2 = (Profesor) session.get(Profesor.class, 1001);
 //        System.out.println("Profesor: "+p2.getNombre());
 
-        Query query = session.createQuery("SELECT count(*) FROM profesor");
+        Query query = session.createQuery("SELECT p FROM Profesor p WHERE nombre LIKE '%U%'");
         
         List<Profesor> profesores = query.list();
         

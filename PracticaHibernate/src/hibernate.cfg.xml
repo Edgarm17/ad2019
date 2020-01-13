@@ -46,6 +46,7 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/adt7_ejemplo1</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.show_sql">true</property>
-    <mapping resource="practicahibernate/Profesor.hbm.xml"/>
+    <!--<mapping resource="practicahibernate/Profesor.hbm.xml"/>-->
+    <mapping class="practicahibernate.Profesor"/>
   </session-factory>
 </hibernate-configuration>
