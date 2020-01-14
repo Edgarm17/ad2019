@@ -7,9 +7,7 @@ package vista;
 
 import controlador.ControladorLibro;
 import java.util.Vector;
-import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import modelo.LibroDAO;
 
 /**
  *
@@ -22,7 +20,6 @@ public class JDLibros extends javax.swing.JDialog {
      */
     
     private ControladorLibro controlador;
-    private LibroDAO libroDAO;
     private JPPrestamo panelPadre;
 
     public JPPrestamo getPanelPadre() {
@@ -37,16 +34,13 @@ public class JDLibros extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         panelPadre = padre;
-        libroDAO = new LibroDAO();
-        controlador = new ControladorLibro(libroDAO,this);
+        controlador = new ControladorLibro(this);
     }
     
     public JDLibros(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
-        libroDAO = new LibroDAO();
-        controlador = new ControladorLibro(libroDAO,this);
+        controlador = new ControladorLibro(this);
     }
 
     /**

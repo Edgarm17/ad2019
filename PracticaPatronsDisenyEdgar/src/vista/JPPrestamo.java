@@ -8,12 +8,10 @@ package vista;
 import com.toedter.calendar.JDateChooser;
 import controlador.ControladorPrestamo;
 import java.text.SimpleDateFormat;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import modelo.PrestamoDAO;
 
 /**
  *
@@ -25,14 +23,12 @@ public class JPPrestamo extends javax.swing.JPanel {
      * Creates new form JPPrestamo
      */
     private ControladorPrestamo controlador;
-    private PrestamoDAO prestamoDAO;
     private JDLibros dialogLibros ;
     private JDSocios dialogSocios ;
     
     public JPPrestamo(JDSocios socios, JDLibros libros) {
         initComponents();
-        prestamoDAO = new PrestamoDAO();
-        controlador = new ControladorPrestamo(prestamoDAO,this);
+        controlador = new ControladorPrestamo(this);
         dialogLibros = libros;
         dialogSocios = socios;
         dialogSocios.setPanelPadre(this);

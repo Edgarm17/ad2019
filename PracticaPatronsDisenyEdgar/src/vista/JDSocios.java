@@ -7,11 +7,7 @@ package vista;
 
 import controlador.ControladorSocio;
 import java.util.Vector;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import modelo.Socio;
-import modelo.SocioDAO;
 
 /**
  *
@@ -26,7 +22,6 @@ public class JDSocios extends javax.swing.JDialog {
      */
     
     private ControladorSocio controlador;
-    private SocioDAO socioDAO;
     private JPPrestamo panelPadre;
     
     public JDSocios(java.awt.Frame parent, boolean modal, JPPrestamo padre) {
@@ -34,8 +29,7 @@ public class JDSocios extends javax.swing.JDialog {
         initComponents();
         
         panelPadre = padre;
-        socioDAO = new SocioDAO();
-        controlador = new ControladorSocio(socioDAO,this);
+        controlador = new ControladorSocio(this);
     }
 
     public JPPrestamo getPanelPadre() {
@@ -50,9 +44,7 @@ public class JDSocios extends javax.swing.JDialog {
     public JDSocios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
-        socioDAO = new SocioDAO();
-        controlador = new ControladorSocio(socioDAO,this);
+        controlador = new ControladorSocio(this);
     }
 
     /**

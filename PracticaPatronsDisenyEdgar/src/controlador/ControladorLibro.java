@@ -21,13 +21,13 @@ public class ControladorLibro {
     private JPLibro vistaLibro;
     private JDLibros dialogLibros;
 
-    public ControladorLibro(LibroDAO libroDAO, JPLibro vistaLibro) {
-        this.libroDAO = libroDAO;
+    public ControladorLibro( JPLibro vistaLibro) {
+        this.libroDAO = new LibroDAO();
         this.vistaLibro = vistaLibro;
     }
 
-    public ControladorLibro(LibroDAO libroDAO, JDLibros dialogLibros) {
-        this.libroDAO = libroDAO;
+    public ControladorLibro( JDLibros dialogLibros) {
+        this.libroDAO = new LibroDAO();
         this.dialogLibros = dialogLibros;
     }
     

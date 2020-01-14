@@ -7,7 +7,6 @@ package controlador;
 
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.JTable;
 import modelo.Socio;
 import modelo.SocioDAO;
@@ -23,13 +22,13 @@ public class ControladorSocio {
     private JPSocio vistaSocio;
     private JDSocios dialogSocio;
 
-    public ControladorSocio(SocioDAO socioDAO, JPSocio vistaSocio) {
-        this.socioDAO = socioDAO;
+    public ControladorSocio( JPSocio vistaSocio) {
+        this.socioDAO = new SocioDAO();
         this.vistaSocio = vistaSocio;
     }
 
-    public ControladorSocio(SocioDAO socioDAO, JDSocios dialogSocio) {
-        this.socioDAO = socioDAO;
+    public ControladorSocio( JDSocios dialogSocio) {
+        this.socioDAO = new SocioDAO();
         this.dialogSocio = dialogSocio;
     }
     

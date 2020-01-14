@@ -7,7 +7,6 @@ package vista;
 
 import com.toedter.calendar.JDateChooser;
 import controlador.ControladorSocio;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
@@ -29,13 +28,11 @@ public class JPSocio extends javax.swing.JPanel {
         this.tfBusqueda = tfBusqueda;
     }
 
-     private ControladorSocio controlador;
-    private SocioDAO socioDAO;
+    private ControladorSocio controlador;
     
     public JPSocio() {
         initComponents();
-        socioDAO = new SocioDAO();
-        controlador = new ControladorSocio(socioDAO,this);
+        controlador = new ControladorSocio(this);
     }
 
     public JSpinner getSpEdadSocio() {

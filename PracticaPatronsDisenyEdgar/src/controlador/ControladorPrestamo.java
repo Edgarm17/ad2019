@@ -27,8 +27,8 @@ public class ControladorPrestamo {
     private PrestamoDAO prestamoDAO; 
     private JPPrestamo vistaPrestamo;
 
-    public ControladorPrestamo(PrestamoDAO libroDAO, JPPrestamo vistaLibro) {
-        this.prestamoDAO = libroDAO;
+    public ControladorPrestamo( JPPrestamo vistaLibro) {
+        this.prestamoDAO = new PrestamoDAO();
         this.vistaPrestamo = vistaLibro;
     }
 

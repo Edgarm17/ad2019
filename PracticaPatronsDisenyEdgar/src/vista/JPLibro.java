@@ -11,7 +11,6 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import modelo.LibroDAO;
 
 /**
  *
@@ -20,15 +19,15 @@ import modelo.LibroDAO;
 public class JPLibro extends javax.swing.JPanel {
 
     private ControladorLibro controlador;
-    private LibroDAO libroDAO;
+    
    
     /**
      * Creates new form JPLibro
      */
     public JPLibro() {
         initComponents();
-        libroDAO = new LibroDAO();
-        controlador = new ControladorLibro(libroDAO,this);
+        
+        controlador = new ControladorLibro(this);
     }
 
     public JComboBox<String> getCbEditorial() {
