@@ -1,0 +1,29 @@
+<div id="contenedorListar">
+    <h2>Lista de prestamos</h2>
+    <div class="contenedorTabla">
+        <table class="tablas">
+            <thead>
+                <tr>
+                    <th>ISBN</th>
+                    <th>NUM.SOCIO</th>
+                    <th>F.PRESTAMO</th>
+                    <th>F.DEVOLUCION</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let auxPrestamo of listaPrestamos">
+                    <td>{{auxPrestamo.libro}}</td>
+                    <td>{{auxPrestamo.socio}}</td>
+                    <td>{{auxPrestamo.fprestamo}}</td>
+                    <td>{{auxPrestamo.fdevolucion}}</td>
+                    <td>
+                        <button (click)="deletePrestamo(auxPrestamo.fprestamo)">Eliminar</button>
+                        <button (click)="updatePrestamo(auxPrestamo.fprestamo)">Editar</button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

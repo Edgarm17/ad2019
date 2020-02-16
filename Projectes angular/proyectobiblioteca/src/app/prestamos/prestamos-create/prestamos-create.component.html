@@ -1,0 +1,25 @@
+<div id="contenedorCrear">
+    <app-libros-list-name (libroABuscar)="insertarLibro($event)"></app-libros-list-name>
+    <app-socios-list-name (socioABuscar)="insertarSocio($event)"></app-socios-list-name>
+    <h2>Datos del prestamo</h2>
+    <div class="contenedorFormulario">
+        <form>
+            <label for="fprestamo">Fecha Pestamo: </label>
+            <input type="string" id="fprestamo" [(ngModel)]="prestamo.fprestamo" name="frprestamo" >
+            <br>
+
+            <label for="fdevolucion">Fecha Devolucion: </label>
+            <input type="string" id="fdevolucion" [(ngModel)]="prestamo.fdevolucion" name="fdevolucion" >
+            <br>
+
+
+            <button (click)="newPrestamo()">Nuevo</button>
+            <button *ngIf="actualizar; else guardar" (click)="updatePrestamo()">Actualizar</button>
+            <ng-template #guardar>
+                <button (click)="savePrestamo()">Guardar</button>
+            </ng-template>
+
+
+        </form>
+    </div>
+</div>

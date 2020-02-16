@@ -1,0 +1,47 @@
+<h2>Buscar socio por nombre o apellido</h2>
+<div id="contenedorBuscarSocio">
+    <form>
+        <label for="nombre">Nombre: </label>
+        <input type="text" id="nombre" [(ngModel)] = "nombre" name="nombre">
+        <br>
+
+        <button (click)="buscarPorNombre()">Buscar</button>
+        <br>
+        <br>
+    </form>
+
+    <div *ngIf="listaSocios.length > 0" class="contenedorTabla">
+        <table class="tablas">
+            <thead>
+                <th>NUM.SOCIO</th>
+                <th>NOMBRE</th>
+                <th>APELLIDOS</th>
+                <th>TELEFONO</th>
+                <th>EDAD</th>
+                <th>FECHA ALTA</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let auxSocio of listaSocios">
+                    <td>{{auxSocio.numsocio}}</td>
+                    <td>{{auxSocio.nombre}}</td>
+                    <td>{{auxSocio.apellidos}}</td>
+                    <td>{{auxSocio.telefono}}</td>
+                    <td>{{auxSocio.edad}}</td>
+                    <td>{{auxSocio.falta}}</td>
+                    <td><button (click)="seleccionarSocio($event,auxSocio)">Seleccionar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+    <div *ngIf="haSeleccionado" id="usuario">
+        <p>Socio Seleccionado</p>
+        <p>NUM.SOCIO: {{socioSeleccionado.numsocio}}</p>
+        <p>NOMBRE: {{socioSeleccionado.nombre}}</p>
+        <p>APELLIDOS: {{socioSeleccionado.apellidos}}</p>
+        <p>TELEFONO: {{socioSeleccionado.telefono}}</p>
+        <p>EDAD: {{socioSeleccionado.edad}}</p>
+        <p>FECHA ALTA: {{socioSeleccionado.falta}}</p>
+    </div>
+</div>

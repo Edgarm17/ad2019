@@ -1,0 +1,23 @@
+#navegacion{
+    border-style: solid;
+    text-align: center;
+    padding: 50px;
+    background-color: red;
+}
+
+.opcionMenu{
+    text-decoration: none;
+    margin: 60px;
+    color: white;
+    font-size: large;
+    font-family: sans-serif;
+}
+
+.opcionMenu:hover{
+    color: lightslategray;
+}
+
+#tituloProyecto{
+    text-align: center;
+    font-family: sans-serif;
+}
