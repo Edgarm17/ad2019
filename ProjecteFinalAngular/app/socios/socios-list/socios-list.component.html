@@ -1,0 +1,32 @@
+<div id="contenedorListar">
+    <h2>Lista de Socios</h2>
+    <div class="contenedorTabla">
+        <table class="tablas">
+            <thead>
+                <tr>
+                    <th>Numero de socio</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Telefono</th>
+                    <th>Edad</th>
+                    <th>Fecha de alta</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let auxSocio of listaSocios">
+                    <td>{{auxSocio.numsocio}}</td>
+                    <td>{{auxSocio.nombre}}</td>
+                    <td>{{auxSocio.apellidos}}</td>
+                    <td>{{auxSocio.telefono}}</td>
+                    <td>{{auxSocio.edad}}</td>
+                    <td>{{auxSocio.falta}}</td>
+                    <td>
+                        <button (click)="deleteSocio(auxSocio.numsocio)">Eliminar</button>
+                        <button (click)="updateSocio(auxSocio.numsocio)">Editar</button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

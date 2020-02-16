@@ -1,0 +1,50 @@
+<h2>Buscar libros por nombre</h2>
+<div id="contenedorBuscarLibro">
+    <form>
+        <label for="nombre">Titulo o autor: </label>
+        <input type="text" id="nombre" [(ngModel)] = "nombre" name="nombre">
+        <br>
+
+        <button (click)="buscarPorNombre()">Buscar</button>
+        <br>
+        <br>
+    </form>
+
+    <div *ngIf="listaLibros.length > 0" class="contenedorTabla">
+        <table class="tablas">
+            <thead>
+                <th>Isbn</th>
+                <th>Titulo</th>
+                <th>Autor</th>
+                <th>Numero de ejemplares</th>
+                <th>Anyo de publicacion</th>
+                <th>Editorial</th>
+                <th>Numero de paginas</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let auxLibro of listaLibros">
+                    <td>{{auxLibro.isbn}}</td>
+                    <td>{{auxLibro.titulo}}</td>
+                    <td>{{auxLibro.autor}}</td>
+                    <td>{{auxLibro.numejemplares}}</td>
+                    <td>{{auxLibro.anyopublicacion}}</td>
+                    <td>{{auxLibro.editorial}}</td>
+                    <td>{{auxLibro.numpag}}</td>
+                    <td><button (click)="seleccionarLibro($event,auxLibro)">Seleccionar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+    <div *ngIf="haSeleccionado" id="usuario">
+        <p>Libro Seleccionado</p>
+        <p>Isbn: {{libroSeleccionado.isbn}}</p>
+        <p>Titulo: {{libroSeleccionado.titulo}}</p>
+        <p>Autor: {{libroSeleccionado.autor}}</p>
+        <p>Numero de ejemplares: {{libroSeleccionado.numejemplares}}</p>
+        <p>Anyo del publicacion: {{libroSeleccionado.anyopublicacion}}</p>
+        <p>Editorial: {{libroSeleccionado.editorial}}</p>
+        <p>Numero de paginas: {{libroSeleccionado.numpag}}</p>
+    </div>
+</div>

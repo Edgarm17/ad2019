@@ -1,0 +1,34 @@
+<div id="contenedorListar">
+    <h2>Lista de Libros</h2>
+    <div class="contenedorTabla">
+        <table class="tablas">
+            <thead>
+                <tr>
+                    <th>Isbn</th>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>Numero ejemplares</th>
+                    <th>Anyo publicacion</th>
+                    <th>Editorial</th>
+                    <th>Numero de paginas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let auxLibro of listaLibros">
+                    <td>{{auxLibro.isbn}}</td>
+                    <td>{{auxLibro.titulo}}</td>
+                    <td>{{auxLibro.autor}}</td>
+                    <td>{{auxLibro.numejemplares}}</td>
+                    <td>{{auxLibro.anyopublicacion}}</td>
+                    <td>{{auxLibro.editorial}}</td>
+                    <td>{{auxLibro.numpag}}</td>
+                    <td>
+                        <button (click)="deleteLibro(auxLibro.isbn)">Eliminar</button>
+                        <button (click)="updateLibro(auxLibro.isbn)">Editar</button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

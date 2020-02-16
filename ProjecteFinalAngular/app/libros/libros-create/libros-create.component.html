@@ -1,0 +1,42 @@
+<div id="contenedorCrear">
+    <h2>Datos del libro</h2>
+    <div class="contenedorFormulario">
+        <form>
+            <label for="isbn">Isbn: </label>
+            <input type="number" id="isbn" [(ngModel)]="libro.isbn" name="isbn" >
+            <br>
+
+            <label for="titulo">Titulo: </label>
+            <input type="string" id="titulo" [(ngModel)]="libro.titulo" name="titulo" >
+            <br>
+
+            <label for="autor">Autor: </label>
+            <input type="string" id="autor" [(ngModel)]="libro.autor" name="autor" >
+            <br>
+
+            <label for="numejemplares">Numero de ejemplares: </label>
+            <input type="number" id="numejemplares" [(ngModel)]="libro.numejemplares" name="numejemplares" >
+            <br>
+
+            <label for="anyopublicacion">AnyoPublicacion: </label>
+            <input type="number" id="anyopublicacion" [(ngModel)]="libro.anyopublicacion" name="anyopublicacion" >
+            <br>
+
+            <label for="editorial">Editorial: </label>
+            <input type="string" id="editorial" [(ngModel)]="libro.editorial" name="editorial" >
+            <br>
+
+            <label for="numpag">Numero de paginas: </label>
+            <input type="number" id="numpag" [(ngModel)]="libro.numpag" name="numpag" >
+            <br>
+
+            <button (click)="newLibro()">Nuevo</button>
+            <button *ngIf="actualizar; else guardar" (click)="updateLibro()">Actualizar</button>
+            <ng-template #guardar>
+                <button (click)="saveLibro()">Guardar</button>
+            </ng-template>
+
+
+        </form>
+    </div>
+</div>
